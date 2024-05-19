@@ -16,6 +16,7 @@ CREATE TABLE Products (
     productId INT AUTO_INCREMENT PRIMARY KEY,
     pymesId INT NOT NULL,
     coverage INT NOT NULL,
+    quotationId INT,
     product_name VARCHAR(255),
     product_options VARCHAR(255),    
     top_feature VARCHAR(255),

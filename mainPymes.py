@@ -106,14 +106,14 @@ def update_pyme(id: int, item: schemas.PymeInput):
     mydb.close()
     return {"pymesId": id, **item.dict()}
 
-# Eliminar una Pyme por su ID
+# Eliminar un Product Pyme por su ID
 @app.delete("/pymes/{id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_pyme(id: int):
     mydb = connect_to_db()
     cursor = mydb.cursor()
-    cursor.execute("DELETE FROM Pymes WHERE pymesId = %s", (id,))
+    cursor.execute("DELETE FROM Products WHERE productId = %s", (id,))
     mydb.commit()
     mydb.close()
     if cursor.rowcount == 0:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Pyme not found")
-    return {"detail": "Pyme deleted successfully"}
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Product Pyme not found")
+    return {"detail": "Product Pyme deleted successfully"}
